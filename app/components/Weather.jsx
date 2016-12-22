@@ -8,11 +8,29 @@ var Weather = React.createClass({
   getInitialState: function () {
     return { isLoading: false };
   },
+  componentDidMount: function () {
+    var cityName = this.props.location.query.location;
+
+    if (cityName && cityName.length) {
+      this.handleUpdateValues({ cityName: cityName });
+      window.location.hash = '#/';
+    }
+  },
+  componentWillReceiveProps: function (newProps) {
+    var cityName = newProps.location.query.location;
+
+    if (cityName && cityName.length) {
+      this.handleUpdateValues({ cityName: cityName });
+      window.location.hash = '#/';
+    }
+  },
   handleUpdateValues: function (values) {
     var self = this;
 
     self.setState({ isLoading: true,
-                    errorMessage: undefined });
+                    errorMessage: undefined,
+                    cityName: undefined,
+                    temp: undefined });
 
     openWeatherMap.getTemp(values.cityName)
     .then(function (temp) {
