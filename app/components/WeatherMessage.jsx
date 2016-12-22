@@ -10,7 +10,7 @@ var WeatherMessage = ({cityName, temp}) => {
   }
 
   return (
-    <p>{message}</p>
+    <p className="text-center">{message}</p>
   );
 };
 
