@@ -2,7 +2,7 @@ var React = require('react');
 
 var Examples = () => {
     return (
-      <h3>Examples</h3>
+      <p3>Examples</p3>
       );
 };
 
